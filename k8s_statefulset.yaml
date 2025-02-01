@@ -35,6 +35,8 @@ metadata:
 specs:
   container:
     image: "nginx_testapp:v1"
+    scripts |
+        cmd: [systemctl restart nginx]
 
   volumeMount:
     volume: testapp_pvc
