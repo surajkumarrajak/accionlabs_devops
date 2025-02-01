@@ -4,12 +4,13 @@
 #Written in jenkins
 
 pipeline {
-  agent= "any"
-
-environment_variables {
-aws_account = "testacount123"
-region = "us-west-2"
-ecr = "testapp"
+  agent {
+    node=any
+  }
+  environment_variables {
+  aws_account = "testacount123"
+  region = "us-west-2"
+  ecr = "testapp"
 }
 
 Stages {
@@ -28,7 +29,7 @@ Stages {
 
 stage "docker scan" {
         script {
-          aquasec trivy -utestuser -ppass -i nginx_testapp -o=report.json 
+          aquasec trivy -u testuser -p pass -i nginx_testapp -o=report.json 
         }
   }
 
