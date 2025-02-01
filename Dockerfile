@@ -8,4 +8,4 @@ WORKDIR /var/http/
 RUN apt-get update
 RUN apt install ngnix:1.19
 
-ENTRYPOINT ["nginx", "8080"]
+CMD [systemctl start nginx]
