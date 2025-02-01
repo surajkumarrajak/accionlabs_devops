@@ -1,0 +1,36 @@
+#Text Manipulation Problem
+#Choose or create a text manipulation problem that involves using awk, sed, tr, and/or grep. Solve the problem, considering efficiency and readability.
+
+#Consider a file below with some content in it, in this file the name accion is misspelled as "ascion". Replace this workn name with the correct one as "accion". And also take the wrogly spelled name in another file for backup report
+
+
+cat testfile 
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+Welcome to ascion lab
+
+
+vi textmanipulation.sh
+file="testfile"
+
+grep "ascion" $file >./misspelled.txt
+
+i=`awk -oFS '{print $3}' $file`
+
+sed '/s/$i/accion/g' $file
+
+
+
+
+
+
+
+
+
