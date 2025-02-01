@@ -1,0 +1,48 @@
+#Kubernetes StatefulSet
+#Write a Kubernetes StatefulSet to deploy the nginx container from the previous question. Utilize persistent volume claims and define resource limits for optimal performance.
+
+--------------------------------------
+apiVersion: extension1/v1
+kind: PersitentVolume
+metadata:
+  name: testapp_pv
+  label: testapp
+
+specs:
+  limit:
+    size: 10Gi
+storageClass: 
+  name: "eks_storage_testapp_1.1"
+-------------------------------------
+
+apiVersion: extension1/v1
+kind: PersitentVolumeClaim
+metadata:
+  name: testapp_pvc
+  label: testapp
+
+specs:
+  volume: testapp
+
+---------------------------------------
+
+apiVersion: extension1/v1
+kind: statefulset
+metadata:
+  name: testapp
+  label: testapp
+
+specs:
+  container:
+    image: "nginx_testapp:v1"
+
+  volumeMount:
+    volume: testapp_pvc
+    path: /var/http/
+
+    
+
+  
+
+  
+
